@@ -1,4 +1,18 @@
 Httpizza::Application.routes.draw do
+  get "order_pages/home"
+
+  get "order_pages/crust"
+
+  get "order_pages/sauce"
+
+  get "order_pages/cheese"
+
+  get "order_pages/toppings"
+
+  get "order_pages/delivery"
+
+  get "order_pages/checkout"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

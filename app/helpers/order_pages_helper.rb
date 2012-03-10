@@ -1,0 +1,2 @@
+module OrderPagesHelper
+end
