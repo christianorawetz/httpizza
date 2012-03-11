@@ -10,7 +10,12 @@ describe "OrderPages" do
 		it "should have the right title" do 
 			visit '/order_pages/home'
 			page.should have_selector('title',
-									  :text => "HTTPizza | Home")
+									  :text => "HTTPizza")
+		end
+
+		it "should not have a custom page title" do
+			visit '/order_pages/home'
+			page.should_not have_selector('title', :text => '| Home')
 		end
 	end
 
