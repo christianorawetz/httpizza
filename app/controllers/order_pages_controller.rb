@@ -1,7 +1,4 @@
 class OrderPagesController < ApplicationController
-  def home
-  end
-
   def crust
   end
 

@@ -1,99 +1,48 @@
 require 'spec_helper'
 
 describe "OrderPages" do
-	describe "Home page" do
-		it "should have the header 'HTTPizza'" do
-			visit '/order_pages/home'
-			page.should have_selector('h1', :text => 'HTTPizza')
-		end
 
-		it "should have the right title" do 
-			visit '/order_pages/home'
-			page.should have_selector('title',
-									  :text => "HTTPizza")
-		end
-
-		it "should not have a custom page title" do
-			visit '/order_pages/home'
-			page.should_not have_selector('title', :text => '| Home')
-		end
-	end
-
+	subject { page }
+	
 	describe "Crust page" do
-		it "should have the header 'Pick a crust'" do 
-			visit '/order_pages/crust'
-			page.should have_selector('h1', :text => 'Pick a crust')
-		end
+		before { visit order_pages_crust_path }
 
-		it "should have the right title" do
-			visit '/order_pages/crust'
-			page.should have_selector('title',
-									  :text => "HTTPizza | Pick a crust")
-		end
+		it { should have_selector('h1', text: 'Pick a crust') }
+		it { should have_selector('title', text: 'HTTPizza | Pick a crust') }
 	end
 
 	describe "Sauce page" do
-		it "should have the header 'Pick a sauce'" do
-			visit '/order_pages/sauce'
-			page.should have_selector('h1', :text => 'Pick a sauce')
-		end
+		before { visit order_pages_sauce_path}
 
-		it "should have the right title" do
-			visit '/order_pages/sauce'
-			page.should have_selector('title',
-									  :text => "HTTPizza | Pick a sauce")
-		end
+		it { should have_selector('h1', text: 'Pick a sauce') }
+		it { should have_selector('title', text: 'HTTPizza | Pick a sauce')}
 	end
 
 	describe "Cheese page" do
-		it "should have the header 'Pick a cheese'" do
-			visit '/order_pages/cheese'
-			page.should have_selector('h1', :text => 'Pick a cheese')
-		end
+		before { visit order_pages_cheese_path }
 
-		it "should have the right title" do
-			visit '/order_pages/cheese'
-			page.should have_selector('title',
-									  :text => "HTTPizza | Pick a cheese")
-		end
+		it { should have_selector('h1', text: 'Pick a cheese')}
+		it { should have_selector('title', text: 'HTTPizza | Pick a cheese')}
 	end
 
 	describe "Toppings page" do 
-		it "should have the header 'Add toppings'" do
-			visit '/order_pages/toppings'
-			page.should have_selector('h1', :text => 'Add toppings')
-		end
+		before { visit order_pages_toppings_path }
 
-		it "should have the right title" do
-			visit '/order_pages/toppings'
-			page.should have_selector('title',
-									  :text => "HTTPizza | Add toppings")
-		end		
+		it { should have_selector('h1', text: 'Add toppings') }
+		it { should have_selector('title', text: 'HTTPizza | Add toppings') }
 	end
 
 	describe "Delivery page" do 
-		it "should have the header 'Delivery Information'" do
-			visit '/order_pages/delivery'
-			page.should have_selector('h1', :text => 'Delivery Information')
-		end
+		before { visit order_pages_delivery_path }
 
-		it "should have the right title" do
-			visit '/order_pages/delivery'
-			page.should have_selector('title',
-									  :text => "HTTPizza | Delivery Information")
-		end
+		it { should have_selector('h1', text: 'Delivery Information') }
+		it { should have_selector('title', text: 'HTTPizza | Delivery Information') }
 	end
 
 	describe "Checkout page" do
-		it "should have the header 'Checkout'" do
-			visit '/order_pages/checkout'
-			page.should have_selector('h1', :text => 'Checkout')
-		end
-
-		it "should have the right title" do
-			visit '/order_pages/checkout'
-			page.should have_selector('title',
-									  :text => "HTTPizza | Checkout")
-		end
+		before { visit order_pages_checkout_path }
+		
+		it { should have_selector('h1', text: 'Checkout') }
+		it { should have_selector('title', text: 'HTTPizza | Checkout' )}
 	end
 end
