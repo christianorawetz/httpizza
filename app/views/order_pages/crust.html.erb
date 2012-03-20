@@ -1,4 +1,50 @@
 <% provide(:title, 'Pick a crust') %>
 
-<h1>Pick a crust</h1>
-<p>Find me in app/views/order_pages/crust.html.erb</p>
+<h1>Choose a Crust</h1>
+
+<div class='row-fluid'>
+
+	<div class='span7'>
+		<div class='make-line'>
+			<div class='make-line-trays'>
+
+				<div id='handTossedCrust' class='make-line-tray center btn btn-small btn-secondary'>
+					<span>hand-tossed</span>
+					<canvas height='90px' width='90px'/>
+				</div>
+
+				<div id='thinCrust' class='make-line-tray center btn btn-small btn-secondary'>
+					<span>thin-crispy</span>
+					<canvas height='90px' width='90px'/>
+				</div>
+
+				<div id='deepDishCrust' class='make-line-tray center btn btn-small btn-secondary'>
+					<span>deep-dish</span>
+					<canvas height='90px' width='90px'/>
+				</div>
+
+			</div> <!-- /div.make-line-trays -->
+
+			<div class='center'>
+				<%= render 'make_line_surface' %>
+			</div> 
+		</div>
+	</div>
+
+	<div class='span5'>
+		<div class='explanation'>
+			Addtl. info about the page. Addtl. info about the page. Addtl. info about the page. Addtl. info about the page.
+		</div>
+	</div>
+
+</div> <!-- /div.make-line -->
+
+<div class='row pull-right'>
+	<button>Cheese</button>
+</div>
+
+<script type='text/javascript'>
+	$(document).ready(function() {
+		initCrustPage();
+	});
+</script>

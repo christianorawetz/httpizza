@@ -32,7 +32,7 @@ textarea {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
+  line-height: 0;
 }
 
 h1 {
@@ -63,10 +63,9 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
-  font-weight: bold;
+  font-weight: normal;
   line-height: 1;
   decoration: none;
 	 &:hover {
@@ -100,3 +99,43 @@ footer {
     }
   }
 }
+
+.rounded-left-corners {
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
+}
+
+.rounded-right-corners {
+  -webkit-border-radius: 0 10px 10px 0;
+  -moz-border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+/* make-line */
+.make-line {
+  background-color: beige;
+  padding: 0.5em;
+}
+
+.make-line-surface {
+  background-color: lightgray;
+}
+
+.make-line-trays {
+  margin-right: 0.5em;
+}
+
+.make-line-tray {
+  margin-bottom: 0.5em;
+  span {
+    display: block;
+  }
+}
+
+.explanation {
+  background-color: yellow;
+  border: solid thin $grayMediumLight;
+}
+
+

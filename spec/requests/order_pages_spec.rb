@@ -9,6 +9,13 @@ describe "OrderPages" do
 
 		it { should have_selector('h1', text: 'Pick a crust') }
 		it { should have_selector('title', text: 'HTTPizza | Pick a crust') }
+
+		it { should have_selector('div.make-line') }
+
+		it { should have_selector('canvas#hand-tossed-crust') }
+		it { should have_selector('canvas#thin-crust') }
+		it { should have_selector('canvas#deep-dish-crust') }
+		it { should have_selector('canvas#pizza') }
 	end
 
 	describe "Sauce page" do
