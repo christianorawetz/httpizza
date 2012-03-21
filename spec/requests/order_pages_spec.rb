@@ -7,15 +7,17 @@ describe "OrderPages" do
 	describe "Crust page" do
 		before { visit order_pages_crust_path }
 
-		it { should have_selector('h1', text: 'Pick a crust') }
-		it { should have_selector('title', text: 'HTTPizza | Pick a crust') }
+		it { should have_selector('h1', text: 'Choose a Crust') }
+		it { should have_selector('title', text: 'HTTPizza | Choose a Crust') }
 
 		it { should have_selector('div.make-line') }
 
-		it { should have_selector('canvas#hand-tossed-crust') }
-		it { should have_selector('canvas#thin-crust') }
-		it { should have_selector('canvas#deep-dish-crust') }
-		it { should have_selector('canvas#pizza') }
+		it { should have_selector("div [data-crust='hand-tossed'] > canvas") }
+		it { should have_selector("div [data-crust='thin'] > canvas") }
+		it { should have_selector("div [data-crust='deep-dish'] > canvas") }
+		it { should have_selector("div [data-crust='whole-wheat'] > canvas") }
+
+		it { should have_selector('div.make-line-surface') }
 	end
 
 	describe "Sauce page" do
@@ -23,6 +25,16 @@ describe "OrderPages" do
 
 		it { should have_selector('h1', text: 'Pick a sauce') }
 		it { should have_selector('title', text: 'HTTPizza | Pick a sauce')}
+
+		it { should have_selector('div.make-line') }
+
+		it { should have_selector("div [data-sauce='pizza-sauce'] > img")}
+		it { should have_selector("div [data-sauce='pesto'] > img")}
+		it { should have_selector("div [data-sauce='bbq-sauce'] > img")}
+		it { should have_selector("div [data-sauce='hot-sauce'] > img")}
+		it { should have_selector("div [data-sauce='sour-cream'] > img")}
+
+		it { should have_selector('div.make-line-surface') }
 	end
 
 	describe "Cheese page" do
