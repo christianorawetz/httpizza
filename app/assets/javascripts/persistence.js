@@ -17,5 +17,17 @@ var orderModel = function() {
 		localStorage.removeItem('order');
 	};
 
+	that.createNewOrder = function() {
+		return { 
+			pizza: { crust: null, sauce: null, cheeses: [], toppings: [] }, 
+			deliveryInfo: { 
+				name: null,
+				email: null,
+				phone: null,
+				address: { },
+			} 
+		};
+	};
+
 	return that;
 };
