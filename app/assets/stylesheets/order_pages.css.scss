@@ -120,6 +120,19 @@ footer {
 
 .make-line-surface {
   background-color: lightgray;
+
+  div div {
+    background-color: brown;
+  }
+  canvas {
+    margin: 0em;
+    background-color: cyan;
+  }
+
+  #cart { 
+    background-color: red;
+  }
+
   #alert {
     margin: 0 2em;
   }

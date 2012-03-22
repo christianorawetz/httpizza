@@ -38,6 +38,14 @@ var makeLineCanvasView = function() {
 		'sour-cream': 'rgb(255, 255, 255)'
 	};
 
+	var cheeseImages = {
+		'mozzarella': '/assets/shredded-mozzarella.png',
+		'parmesan': '/assets/shredded-parmesan.png',
+		'cheddar': '/assets/shredded-cheddar.png',
+		'feta': '/assets/shredded-feta.png',
+		'gorgonzola': '/assets/shredded-gorgonzola.png'
+	};
+
 	that.drawPizzaSmall = function(canvas, pizza) {
 		var xoffset = 45;
 		var yoffset = 45;
@@ -62,6 +70,7 @@ var makeLineCanvasView = function() {
 
 			drawCrust(context, pizza, xoffset, yoffset, radius);
 			drawSauce(context, pizza, xoffset, yoffset, radius - 10);
+			drawCheeses(context, pizza, xoffset, yoffset, radius - 5);
 		} else {
 			console.log("Browser doesn't support canvas api.");
 		}
@@ -110,6 +119,21 @@ var makeLineCanvasView = function() {
 	function drawSauce(context, pizza, xoffset, yoffset, radius) {
 		var color = sauceBrushes[pizza.sauce];
 		that.drawFilledCircle(context, xoffset, yoffset, radius, color);
+	}
+
+	function drawCheeses(context, pizza, xoffset, yoffset, radius) {
+		if ((typeof pizza.cheeses != "undefined") && pizza.cheeses !== null && pizza.cheeses.length > 0) {
+			$.each(pizza.cheeses, function(index, value) {
+				var image = new Image();
+				
+				image.onload = function() {
+					var pattern = context.createPattern(image, "repeat");
+					that.drawFilledCircle(context, xoffset, yoffset, radius, pattern);
+				};
+
+				image.src = cheeseImages[value];
+			});
+		}	
 	}
 
 	return that;

@@ -40,8 +40,17 @@ describe "OrderPages" do
 	describe "Cheese page" do
 		before { visit order_pages_cheese_path }
 
-		it { should have_selector('h1', text: 'Pick a cheese')}
-		it { should have_selector('title', text: 'HTTPizza | Pick a cheese')}
+		it { should have_selector('h1', text: 'Add Cheese') }
+		it { should have_selector('title', text: 'HTTPizza | Add Cheese') }
+
+		it { should have_selector('div.make-line') };
+		it { should have_selector('div.make-line-surface') }
+
+		it { should have_selector("div [data-cheese='mozzarella'] > img") }
+		it { should have_selector("div [data-cheese='parmesan'] > img") }
+		it { should have_selector("div [data-cheese='cheddar'] > img") }
+		it { should have_selector("div [data-cheese='feta'] > img") }
+		it { should have_selector("div [data-cheese='gorgonzola'] > img") }
 	end
 
 	describe "Toppings page" do 
@@ -62,6 +71,6 @@ describe "OrderPages" do
 		before { visit order_pages_checkout_path }
 		
 		it { should have_selector('h1', text: 'Checkout') }
-		it { should have_selector('title', text: 'HTTPizza | Checkout' )}
+		it { should have_selector('title', text: 'HTTPizza | Checkout') }
 	end
 end

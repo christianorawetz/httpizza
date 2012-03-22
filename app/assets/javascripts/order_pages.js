@@ -26,8 +26,9 @@ var makeLinePresenter = function(model, view, validationRequired) {
 
 	// Fixes an invalid order by merging it with a valid one.
 	function fixInvalidOrder(invalidOrder) {
-		// Create a new valid-by-default order and merge it with the existing order.
-		var validOrder = { pizza: { crust: 'hand-tossed' }, deliveryInfo: { } };
+		// Create a new valid order and merge it with the existing order.
+		var validOrder = model.createNewOrder();
+		validOrder.pizza.crust = 'hand-tossed';
 		var fixedOrder = $.extend({}, invalidOrder, validOrder);
 
 		return fixedOrder;
@@ -48,7 +49,7 @@ var crustPresenter = function(model, view) {
 
 	// Initializes this presenter (renders make-line tray items and assigns event handlers).
 	that.initialize = function() {
-		$('.make-line-tray').each(function() {
+		$('div.make-line-tray').each(function() {
 			// Draw crust icon.
 			renderCrustOption(this);
 
@@ -69,7 +70,7 @@ var crustPresenter = function(model, view) {
 
 	// Crust button clicked event handler.
 	function onCrustClicked(elem) {
-		that.order = that.order || { pizza: { }, deliveryInfo: { } };
+		that.order = that.order || model.createNewOrder();
 		that.order.pizza.crust = elem.getAttribute('data-crust');
 		model.saveCurrentOrder(that.order);
 
@@ -91,10 +92,35 @@ var saucePresenter = function(model, view) {
 
 	function onSauceClicked(elem) {
 		that.order.pizza.sauce = elem.getAttribute('data-sauce');
-		that.renderPizzaOnMakeLine();
 		model.saveCurrentOrder(that.order);
+		that.renderPizzaOnMakeLine();
 	}
 
 	return that;
 };
 
+var cheesePresenter = function(model, view) {
+	var that = makeLinePresenter(model, view, true);
+
+	that.initialize = function() {
+		$('.make-line-tray').click(function() {
+			onCheeseClicked(this);
+		});
+	};
+
+	function onCheeseClicked(elem) {
+		var cheese = elem.getAttribute('data-cheese');
+
+		if (typeof that.order.pizza.cheeses == 'undefined' || that.order.pizza.cheeses === null) {
+			that.order.pizza.cheeses = [];
+		}
+
+		if ( $.inArray(cheese, that.order.pizza.cheeses) === -1 ) {
+			that.order.pizza.cheeses.push(cheese);
+			model.saveCurrentOrder(that.order);
+			that.renderPizzaOnMakeLine();
+		}
+	}
+
+	return that;
+};
