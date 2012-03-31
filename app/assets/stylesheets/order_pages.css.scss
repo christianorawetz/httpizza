@@ -27,7 +27,7 @@ textarea {
   text-align: center;
 }
 
-.center h1 {
+.center h0 {
   margin-bottom: 10px;
 }
 
@@ -112,51 +112,56 @@ footer {
   border-radius: 0 10px 10px 0;
 }
 
-/* make-line */
-.make-line {
-  background-color: beige;
-  padding: 0.5em;
+
+#make-line {
+  background-color: white;
 }
 
-.make-line-surface {
-  background-color: lightgray;
+#ingredients-view {
+  background-color: lightgrey;
+  padding: 0em;
+  
+  #make-line-ingredients {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: scroll;
+    overflow-y: hidden;
+    li { 
+      list-style-type: none;
+      display: inline-block;
+      width: 75px;
+      span {
+        display: block;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
 
-  div div {
-    background-color: brown;
-  }
-  canvas {
-    margin: 0em;
-    background-color: cyan;
+  #make-line-nav {
+    margin: 0em auto;
+    width: 100%;
+    text-align: center;
+    li {
+      list-style-type: none;
+      display: inline;
+      margin-right: 2em;
+      a {
+        width: 100%;
+      }
+    }
   }
 
-  #cart { 
-    background-color: red;
-  }
-
-  #alert {
-    margin: 0 2em;
-  }
 }
 
-.make-line-trays {
-  margin-right: 0.5em;
+#pizza-view {
+  position: relative;
+  margin: 2em;
+  #crust-canvas { position: absolute; left: 0px; top: 0px; z-index: 0; }
+  #sauce-canvas { position: absolute; left: 0px; top: 0px; z-index: 1; }
+  #cheese-canvas { position: absolute; left: 0px; top: 0px; z-index: 2; }
+  #toppings-canvas { position: relative; left: 0px; top: 0px; z-index: 3; }
+
 }
-
-.make-line-tray {
-  margin-bottom: 0.5em;
-  span {
-    display: block;
-  }
-
-  img {
-    height: 50px;
-    width: 50px;
-  }
-}
-
-.explanation {
-  background-color: yellow;
-  border: solid thin $grayMediumLight;
-}
-
-

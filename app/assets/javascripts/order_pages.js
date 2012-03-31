@@ -15,6 +15,9 @@ var makeLinePresenter = function(model, view, validationRequired) {
 		if (that.order != null && that.order.pizza != null) {
 			view.drawPizzaLarge(that.makeLineSurface, that.order.pizza);
 		} 
+
+		// Notifies all subscribers that the order has been updated.
+		ps.publish("order", that.order);
 	};
 
 	// If a user navigates to one of the order pages without first selecting a crust,

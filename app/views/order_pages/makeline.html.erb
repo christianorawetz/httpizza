@@ -1,0 +1,47 @@
+<%= provide(:title, 'Build a Pizza') %>
+
+<h1>Build a Pizza</h1>
+
+<div class='row-fluid'>
+
+	<div class='span7'>
+		<div id='make-line'>
+			<div id='ingredients-view'></div>
+
+			<div id='pizza-view'></div>
+		</div> <!-- /div.make-line -->
+	</div>
+
+	<div class='span5 '>
+		<aside id='explanations'>
+			Addtl. info about the page. Addtl. info about the page. Addtl. info about the page. Addtl. info about the page.
+		</aside>
+	</div>
+
+</div> <!-- /div.make-line -->
+
+<script type='text/template' id='ingredients_template'>
+	<ul id='make-line-ingredients'>
+		<? _.each(ingredients, function(ingredient) { ?>
+			<li class='center btn btn-small btn-secondary' data-ingredient="<?= ingredient.get('ingredient_type') + ':' + ingredient.get('name') ?>">
+				<span><?= ingredient.get("name") ?></span>
+				<img src='<?= ingredient.get("icon_image") ?>'/>
+			</li>
+		<? }); ?>
+	</ul>
+	<ul id='make-line-nav' >
+		<li id='crustLink' class='active'><a href='#'>Crusts</a></li>
+		<li id='sauceLink'><a href='#'>Sauces</a></li>
+		<li id='cheesesLink'><a href='#'>Cheeses</a></li>
+		<li id='toppingsLink'><a href='#'>Toppings</a></li>
+	</ul>
+</script>
+
+<script type='text/template' id='pizza_template'>
+	<canvas id='crust-canvas' height='300px' width='300px'></canvas>
+	<canvas id='sauce-canvas' height='300px' width='300px'></canvas>
+	<canvas id='cheese-canvas' height='300px' width='300px'></canvas>
+	<canvas id='toppings-canvas' height='300px' width='300px'></canvas>
+</script>
+
+<!-- center btn btn-small btn-secondary -->

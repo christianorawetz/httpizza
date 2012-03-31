@@ -121,6 +121,7 @@ var makeLineCanvasView = function() {
 	function drawDeepDishCrust(context, pizza, xoffset, yoffset, radius) {
 		that.drawFilledCircle(context, xoffset, yoffset, radius, "rgb(255, 219, 112)");
 		that.drawEmptyCircle(context, xoffset, yoffset, radius - 1, "rgb(60, 60, 60)");
+
 	}
 
 	function drawWholeWheatCrust(context, pizza, xoffset, yoffset, radius) {

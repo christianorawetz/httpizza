@@ -12,4 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require lib/underscore-min
+//= require lib/backbone-min
+//= require models/order
+//= require models/ingredient
+//= require views/pizza_view
+//= require views/ingredients_view
+//= require modules/pizza_canvas_helper
+//= require makeline
+
+
