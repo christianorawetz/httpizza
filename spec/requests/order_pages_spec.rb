@@ -13,6 +13,7 @@ describe "OrderPages" do
 		it { should have_selector('div#ingredients-view') }
 		it { should have_selector('div#pizza-view') }
 		it { should have_selector('script#ingredients_template') }
-		it { should have_selector('script#pizza_template') }
+		it { should have_selector('script#order_ticket_template') }
+		it { should have_selector('div#order-ticket-view') }
 	end
 end

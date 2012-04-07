@@ -1,4 +1,4 @@
-// Create a namespace for our app.
+// Creates a namespace for the app.
 var httpizza = httpizza || {};
 
 httpizza.Ingredient = Backbone.Model.extend({});
@@ -6,29 +6,36 @@ httpizza.Ingredient = Backbone.Model.extend({});
 httpizza.Ingredients = Backbone.Collection.extend({
 	model: httpizza.Ingredient,
 	url: '/ingredients.json',
+
 	getSauces: function() {
-		return this.filterIngredients('toppings');
+		return this.filterByType('toppings');
 	},
+
 	getCheeses: function() {
-		return this.filterIngredients('cheese');
+		return this.filterByType('cheese');
 	},
+
 	getSauces: function() {
-		return this.filterIngredients('sauce');
+		return this.filterByType('sauce');
 	},
+
 	getCrusts: function() {
-		return this.filterIngredients('crust');
+		return this.filterByType('crust');
 	},
+
 	getToppings: function() {
-		return this.filterIngredients('topping');
+		return this.filterByType('topping');
 	},
-	filterIngredients: function(ingredient_type) {
+
+	filterByType: function(ingredientType) {
 		return this.filter(function(ingredient) {
-			return ingredient.get('ingredient_type') === ingredient_type;
+			return ingredient.get('ingredient_type') === ingredientType;
 		});
 	},
-	filterByName: function(name) {
+
+	filterByName: function(ingredientName) {
 		return this.filter(function(ingredient) {
-			return ingredient.get('name') === name;
+			return ingredient.get('name') === ingredientName;
 		});
 	}
 });

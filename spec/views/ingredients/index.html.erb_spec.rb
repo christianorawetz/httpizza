@@ -5,14 +5,14 @@ describe "ingredients/index" do
     assign(:ingredients, [
       stub_model(Ingredient,
         :name => "Name",
-        :type => "Type",
+        :ingredient_type => "Type",
         :icon_image => "Icon Image",
         :brush_image => "Brush Image",
         :price => "9.99"
       ),
       stub_model(Ingredient,
         :name => "Name",
-        :type => "Type",
+        :ingredient_type => "Type",
         :icon_image => "Icon Image",
         :brush_image => "Brush Image",
         :price => "9.99"

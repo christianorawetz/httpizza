@@ -100,29 +100,25 @@ footer {
   }
 }
 
-.rounded-left-corners {
-  -webkit-border-radius: 10px 0 0 10px;
-  -moz-border-radius: 10px 0 0 10px;
-  border-radius: 10px 0 0 10px;
-}
-
-.rounded-right-corners {
-  -webkit-border-radius: 0 10px 10px 0;
-  -moz-border-radius: 0 10px 10px 0;
-  border-radius: 0 10px 10px 0;
-}
-
-
 #make-line {
-  background-color: white;
+  width: 625px;
+  margin: 0px auto;
 }
 
 #ingredients-view {
-  background-color: lightgrey;
-  padding: 0em;
+  
+  padding: 0em 1em;
+  padding-top: 1em;
+  background-image: url('/assets/steel.jpg');
+  background-repeat: repeat;
+  border-radius: 9px; 
+  -moz-border-radius: 9px; 
+  -webkit-border-radius: 9px; 
+  border: 0px solid #800000;
+  margin-bottom: 0.5em;
   
   #make-line-ingredients {
-    margin: 0 auto;
+    margin: 0em auto;
     white-space: nowrap;
     overflow: scroll;
     overflow-y: hidden;
@@ -141,7 +137,7 @@ footer {
   }
 
   #make-line-nav {
-    margin: 0em auto;
+    margin: 0.25em auto;
     width: 100%;
     text-align: center;
     li {
@@ -156,12 +152,78 @@ footer {
 
 }
 
-#pizza-view {
-  position: relative;
-  margin: 2em;
-  #crust-canvas { position: absolute; left: 0px; top: 0px; z-index: 0; }
-  #sauce-canvas { position: absolute; left: 0px; top: 0px; z-index: 1; }
-  #cheese-canvas { position: absolute; left: 0px; top: 0px; z-index: 2; }
-  #toppings-canvas { position: relative; left: 0px; top: 0px; z-index: 3; }
+.active-link {
+  font-weight: bold;
+}
 
+.inactive-link {
+  font-weight: normal;
+}
+
+#order-area {
+  width: 100%;
+  display: inline-block;
+  margin: 0em;
+  background-image: url('/assets/tiles.jpg');
+  background-repeat: repeat;
+
+  border-radius: 9px; 
+  -moz-border-radius: 9px; 
+  -webkit-border-radius: 9px; 
+  border: 0px solid #800000;
+
+
+  #pizza-view {
+    float: left;
+    position: relative;
+
+    canvas { 
+      margin: 1em;
+    }
+
+    #crust-canvas { position: absolute; left: 0px; top: 0px; z-index: 0; }
+    #sauce-canvas { position: absolute; left: 0px; top: 0px; z-index: 1; }
+    #cheese-canvas { position: absolute; left: 0px; top: 0px; z-index: 2; }
+    #toppings-canvas { position: relative; left: 0px; top: 0px; z-index: 3; }
+  }
+
+  #order-ticket {
+    float: right;
+    width: 250px;
+    background-image: url('/assets/paper.jpg');
+    background-repeat: repeat;
+    padding: 0.25em;
+    border-radius: 9px; 
+    -moz-border-radius: 9px; 
+    -webkit-border-radius: 9px; 
+    border: 0px solid #800000;
+    -moz-box-shadow: 6px 6px 5px #170000;
+    -webkit-box-shadow: 6px 6px 5px #170000;
+    box-shadow: 6px 6px 5px #170000;
+    margin: 1em;
+
+    h1 { font-size: 10pt; margin: 1em;}
+
+    #ticket-items {
+      border-top: solid thin black;
+      border-bottom: solid thin black;
+      .order-ticket-item-group {
+        h1 { font-size: 9pt; margin: 1em; text-transform:capitalize; }
+        ul {
+          margin: 0em;
+          li {
+            list-style-type: none;
+            div { display: inline; }
+            .remove-link { float: right; }
+            .item-price { float: right; margin: 0 1em; }
+          }
+        }
+      }
+    }
+
+    #ticket-cost {
+      float: right;
+      label { font-weight: bold; display: inline; }
+    }
+  }
 }

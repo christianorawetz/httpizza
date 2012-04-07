@@ -2,22 +2,22 @@
 
 <h1>Build a Pizza</h1>
 
-<div class='row-fluid'>
 
-	<div class='span7'>
-		<div id='make-line'>
-			<div id='ingredients-view'></div>
+<div id='make-line'>
+	<div id='ingredients-view'></div>
 
-			<div id='pizza-view'></div>
-		</div> <!-- /div.make-line -->
+	<div id='order-area'>
+		<div id='pizza-view'>
+			<canvas id='crust-canvas' height='300px' width='300px'></canvas>
+			<canvas id='sauce-canvas' height='300px' width='300px'></canvas>
+			<canvas id='cheese-canvas' height='300px' width='300px'></canvas>
+			<canvas id='toppings-canvas' height='300px' width='300px'></canvas>
+		</div>
+
+		<div id='order-ticket-view'>
+			
+		</div>
 	</div>
-
-	<div class='span5 '>
-		<aside id='explanations'>
-			Addtl. info about the page. Addtl. info about the page. Addtl. info about the page. Addtl. info about the page.
-		</aside>
-	</div>
-
 </div> <!-- /div.make-line -->
 
 <script type='text/template' id='ingredients_template'>
@@ -30,18 +30,43 @@
 		<? }); ?>
 	</ul>
 	<ul id='make-line-nav' >
-		<li id='crustLink' class='active'><a href='#'>Crusts</a></li>
-		<li id='sauceLink'><a href='#'>Sauces</a></li>
-		<li id='cheesesLink'><a href='#'>Cheeses</a></li>
-		<li id='toppingsLink'><a href='#'>Toppings</a></li>
+		<li><a id='crustLink' href='#' class='active-link'>Crusts</a></li>
+		<li><a id='sauceLink' href='#'>Sauces</a></li>
+		<li><a id='cheesesLink' href='#'>Cheeses</a></li>
+		<li><a id='toppingsLink' href='#'>Toppings</a></li>
 	</ul>
 </script>
 
-<script type='text/template' id='pizza_template'>
-	<canvas id='crust-canvas' height='300px' width='300px'></canvas>
-	<canvas id='sauce-canvas' height='300px' width='300px'></canvas>
-	<canvas id='cheese-canvas' height='300px' width='300px'></canvas>
-	<canvas id='toppings-canvas' height='300px' width='300px'></canvas>
-</script>
+<script type='text/template' id='order_ticket_template'>
+	<div id='order-ticket'>
+		<h1>Order Ticket</h1>
 
-<!-- center btn btn-small btn-secondary -->
+		<div id='ticket-items'>
+		<? _.each(itemGroups, function(itemGroup) { ?>
+			<section class='order-ticket-item-group'>
+			<h1><?= itemGroup.title ?></h1>
+			<ul>
+			<? _.each(itemGroup.items, function(item) { ?>
+				<li>
+					<div class='item-name'><?= item.name ?></div>
+					
+					<div class='remove-link'>
+						<a href='#' data-ingredient="<?= itemGroup.title + ':' + item.name ?>">
+							<?= itemGroup.title === 'crust' ? 'Change&nbsp;' : 'Remove'?>
+						</a>
+					</div>
+
+					<div class='item-price'>...$<?= item.price ?></div>
+				</li>
+			<? }); ?>
+			</ul>
+			</section>
+		<? }); ?>
+		</div>
+
+		<div id='ticket-cost'>
+			<label>Total:</label>
+			$<?= total.toFixed(2) ?>
+		</div>
+	</div>
+</script>

@@ -1,4 +1,4 @@
-// Create a namespace for our app.
+// Creates a namespace for the app.
 var httpizza = httpizza || {};
 
 httpizza.Pizza = Backbone.Model.extend({

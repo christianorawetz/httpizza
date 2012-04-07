@@ -18,6 +18,7 @@
 //= require models/ingredient
 //= require views/pizza_view
 //= require views/ingredients_view
+//= require views/order_ticket_view
 //= require modules/pizza_canvas_helper
 //= require makeline
 
