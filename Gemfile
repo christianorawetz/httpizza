@@ -3,11 +3,13 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 gem 'bootstrap-sass', '2.0.0'
 
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.5'
+  # gem 'sqlite3', '1.3.5'
+  gem 'mysql2'
   gem 'rspec-rails', '2.8.1'
   gem 'guard-rspec', '0.5.5'
 end
@@ -35,10 +37,12 @@ group :test do
   gem 'libnotify', '0.5.9'
   gem 'guard-spork', '0.3.2'
   gem 'spork', '0.9.0'
+  gem 'mysql2'
 end
 
 group :production do
-  gem 'pg', '0.12.2'
+  # gem 'pg', '0.12.2'
+  gem 'mysql2'
 end
 
 # To use ActiveModel has_secure_password
@@ -51,7 +55,7 @@ end
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

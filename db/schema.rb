@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(:version => 20120322183830) do
     t.string   "ingredient_type"
     t.string   "icon_image"
     t.string   "brush_image"
-    t.decimal  "price"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.decimal  "price",           :precision => 10, :scale => 0
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
 end
