@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+  caches_page :index
+  
   # GET /ingredients
   # GET /ingredients.json
   def index
