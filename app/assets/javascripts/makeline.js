@@ -1,6 +1,10 @@
 var httpizza = httpizza || {};
 
 httpizza.AppRouter = Backbone.Router.extend({
+	routes: {
+		"": "index"
+	},
+
 	initialize: function() {
 		_.bindAll(this, "loadViews");
 
@@ -10,12 +14,14 @@ httpizza.AppRouter = Backbone.Router.extend({
 		// Create a new Pizza and Ingredients collection.
 		this.pizza = new httpizza.Pizza();
 		this.ingredients = new httpizza.Ingredients();
+	},
 
+	index: function() {
 		// Call service to populate the collection.
 		this.ingredients.fetch({ 
 			success: this.loadViews, 
 			error: function() { alert("Failed to call service."); }
-		});
+		});		
 	},
 
 	loadViews: function() {
