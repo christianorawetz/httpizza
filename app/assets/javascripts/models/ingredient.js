@@ -5,7 +5,7 @@ httpizza.Ingredient = Backbone.Model.extend({});
 
 httpizza.Ingredients = Backbone.Collection.extend({
 	model: httpizza.Ingredient,
-	url: '/ingredients.json',
+	url: '/httpizza/ingredients.json',
 
 	getSauces: function() {
 		return this.filterByType('toppings');

@@ -23,7 +23,7 @@ set :deploy_via, :remote_cache
 
 set :user, "passenger"
 set :use_sudo, false
-set :deploy_to, "/home/passenger/webapps/public/#{application}"
+set :deploy_to, "/home/passenger/www/railsapps/#{application}"
 
 role :web, "linux-server.local"                          # Your HTTP server, Apache/etc
 role :app, "linux-server.local"                          # This may be the same as your `Web` server
