@@ -2,14 +2,15 @@
 var httpizza = httpizza || {};
 
 /**
-*
-* Helper class for drawing shapes onto a canvas.
-*
+* Helper module for drawing shapes onto a canvas.
 */
 httpizza.CanvasHelper = function() {
+	// Create a new object.
 	var that = {};
 
-	// Gets a 2D context from the canvas.
+	/**
+	* Gets a 2D context from the canvas.
+	*/
 	that.getContext = function(canvas) {
 		if (canvas.getContext) {
 			return canvas.getContext('2d');
@@ -19,20 +20,26 @@ httpizza.CanvasHelper = function() {
 		}
 	};
 
-	// Clears the provided canvas element.
+	/**
+	* Clears the provided canvas element.
+	*/
 	that.clearCanvas = function(canvas) {
 		var context = that.getContext(canvas);
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	};
 
-	// Draws a filled circle onto the canvas context.
+	/**
+	* Draws a filled circle onto the canvas context.
+	*/
 	that.drawFilledCircle = function(context, xoffset, yoffset, radius, fillStyle) {
 		context.fillStyle = fillStyle;
 		drawCircle(context, xoffset, yoffset, radius);
 		context.fill();
 	};
 
-	// Draws an empty circle onto the canvas context.
+	/**
+	* Draws an empty circle onto the canvas context.
+	*/
 	that.drawEmptyCircle = function(context, xoffset, yoffset, radius, strokeStyle) {
 		context.strokeStyle = strokeStyle;
 		context.lineWidth 	= 3;
@@ -40,7 +47,9 @@ httpizza.CanvasHelper = function() {
 		context.stroke();
 	};
 
-	// Draws a circle onto the canvas context.
+	/**
+	* Draws a circle onto the canvas context.
+	*/
 	function drawCircle(context, xoffset, yoffset, radius) {
 		context.beginPath();
 		context.arc(xoffset, yoffset, radius, 0, Math.PI * 2, true);
@@ -51,12 +60,10 @@ httpizza.CanvasHelper = function() {
 };
 
 /**
-*
-* Helper class for drawing a pizza and toppings onto a canvas.
-*
+* Helper module for drawing a pizza and toppings onto a canvas. Extends CanvasHelper.
 */
 httpizza.PizzaCanvasHelper = function(ingredients) {
-	// Create a new CanvasHelper and extend its functionality.
+	// Create a new CanvasHelper in order to extend its functionality.
 	var that = new httpizza.CanvasHelper();
 
 	// Offsets and radius for drawing circular shapes and patterns.
@@ -73,7 +80,9 @@ httpizza.PizzaCanvasHelper = function(ingredients) {
 		'Sour Cream': 'rgb(255, 255, 255)'
 	};
 
-	// Draws a pizza's crust onto the canvas.
+	/**
+	* Draws a pizza's crust onto the canvas.
+	*/
 	that.drawCrust = function(canvas, pizza) {
 		var crust = ingredients.filterByName(pizza.get('crust'))[0];
 		var imageUrl = crust.get('brush_image');
@@ -89,7 +98,9 @@ httpizza.PizzaCanvasHelper = function(ingredients) {
 		imageObj.src = imageUrl;
 	};
 
-	// Draws a pizza's sauce onto the canvas.
+	/**
+	* Draws a pizza's sauce onto the canvas.
+	*/
 	that.drawSauce = function(canvas, pizza) {
 		var sauce = pizza.get('sauce');
 
@@ -104,7 +115,9 @@ httpizza.PizzaCanvasHelper = function(ingredients) {
 		}
 	};
 
-	// Draws a pizza's cheeses onto a canvas.
+	/**
+	* Draws a pizza's cheeses onto a canvas.
+	*/
 	that.drawCheese = function(canvas, pizza) {
 		that.clearCanvas(canvas);
 
@@ -113,7 +126,9 @@ httpizza.PizzaCanvasHelper = function(ingredients) {
 		drawPattern(that.cheeseContext, pizza.get('cheeses'));
 	};
 
-	// Draws a pizza's toppings onto a canvas.
+	/**
+	* Draws a pizza's toppings onto a canvas.
+	*/
 	that.drawToppings = function(canvas, pizza) {
 		that.clearCanvas(canvas);
 
@@ -122,7 +137,9 @@ httpizza.PizzaCanvasHelper = function(ingredients) {
 		drawPattern(that.toppingsContext, pizza.get('toppings'));
 	};
 
-	// Draws ingredients using a context.
+	/**
+	* Draws ingredients using a context.
+	*/
 	function drawPattern(context, ingredientNames) {
 		_.each(ingredientNames, function(name) {
 			var ingredient = ingredients.filterByName(name)[0];

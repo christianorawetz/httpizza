@@ -1,16 +1,15 @@
 // Create a namespace for our app.
 var httpizza = httpizza || {};
 
+/**
+* Defines the behavior of the Ingredients view.
+*/
 httpizza.IngredientsView = Backbone.View.extend({
-	initialize: function() {
-		_.bindAll(this, "render", "renderCrusts", "renderSauces", "renderCheeses", "renderToppings");
 
-		this.ingredients = this.options.ingredients;
-		this.pizza = this.options.pizza;
-
-		this.template = _.template( $("#ingredients_template").html() );
-	},
-
+	/**
+	* Event bindings - associate UI events with event handler methods.
+	* (e.g. a click on the #crustLink element invokes the renderCrusts method)
+	*/
 	events: {
 		'click #make-line-ingredients li': 'addIngredient',
 		'click #crustLink': 'renderCrusts',
@@ -20,8 +19,9 @@ httpizza.IngredientsView = Backbone.View.extend({
 		'click li a': 'toggleLinkStyle'
 	},
 
-	// Maps ingredient types to functions that know 
-	// how to update the ingredients of a pizza model.
+	/**
+	* Maps ingredient types to functions that know how to update the ingredients of a pizza.
+	*/
 	fnMap: {
 		"crust": function(value) { return { "crust": value } },
 		"sauce": function(value) { return { "sauce": value } },
@@ -35,25 +35,48 @@ httpizza.IngredientsView = Backbone.View.extend({
 		}
 	},
 
-	// Adds an ingredient to a pizza
+	/**
+	* Invoked automatically when a new IngredientsView object is created.
+	*/
+	initialize: function() {
+		// Ensure all methods have a reference to this 'this'.
+		_.bindAll(this, "render", "renderCrusts", "renderSauces", "renderCheeses", "renderToppings");
+
+		// Get the ingredients and the pizza from the constructor arguments (this.options).
+		this.ingredients = this.options.ingredients;
+		this.pizza = this.options.pizza;
+
+		// Compile the view template.
+		this.template = _.template( $("#ingredients_template").html() );
+	},
+
+	/**
+	* Adds an ingredient to a pizza.
+	*/
 	addIngredient: function(e) {
-		// Obtain the ingredient data from the element's data-* attribute
+		// Obtain the ingredient data from the element's data-* attribute.
 		var data = e.currentTarget.getAttribute('data-ingredient').split(':');
 		var property = data[0];
 		var value = data[1];
 
-		// Obtain the new pizza property.
-		var updateProperty = this.fnMap[property](value, this.pizza);
+		// Obtain an update method from the fnMap hash and invoke it to obtain an updated pizza property.
+		var updatedProperty = this.fnMap[property](value, this.pizza);
 
-		// Update the pizza.
-		this.pizza.set(updateProperty);
+		// Update the pizza model.
+		this.pizza.set(updatedProperty);
 	},
 
+	/**
+	* Renders the default ingredients view.
+	*/
 	render: function() {
+		// Render crusts by default.
 		this.renderCrusts();
 	},
 
-	// Toggles the active link style when the user clicks on a link.
+	/**
+	* Toggles the active link style when the user clicks on a link.
+	*/
 	toggleLinkStyle: function(e) {
 		var target = e.currentTarget;
 
@@ -61,21 +84,33 @@ httpizza.IngredientsView = Backbone.View.extend({
 		$("#" + e.currentTarget.id).addClass('active-link');
 	},
 
+	/**
+	* Renders the crusts.
+	*/
 	renderCrusts: function(e) {
 		var crusts = { ingredients: this.ingredients.getCrusts() };
 		$(this.el).html( this.template(crusts) );
 	},
 
+	/**
+	* Renders the sauces.
+	*/
 	renderSauces: function() {
 		var sauces = { ingredients: this.ingredients.getSauces() };
 		$(this.el).html( this.template(sauces) );
 	},
 
+	/**
+	* Renders the cheeses.
+	*/
 	renderCheeses: function() {
 		var cheeses = { ingredients: this.ingredients.getCheeses() };
 		$(this.el).html( this.template(cheeses) );
 	},
 
+	/**
+	* Renders the toppings.
+	*/
 	renderToppings: function() {
 		var toppings = { ingredients: this.ingredients.getToppings() };
 		$(this.el).html( this.template(toppings) ); 
