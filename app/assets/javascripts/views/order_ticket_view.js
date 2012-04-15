@@ -38,12 +38,10 @@ httpizza.OrderTicketView = Backbone.View.extend({
 		if (typeof this.pizza.get(propertyName) !== 'undefined') {
 			var propertyValue = this.pizza.get(propertyName);
 
-			if ( _.isArray(propertyValue) ) {
-				if (propertyValue.length > 0) {
-					itemGroup = { title: propertyName, items: this.createItems(propertyValue) };
-				}
-			} else {
+			if ( !_.isArray(propertyValue) ) {
 				itemGroup = { title: propertyName, items: [ this.createItem(propertyValue) ] };
+			} else if (propertyValue.length > 0) {
+				itemGroup = { title: propertyName, items: this.createItems(propertyValue) };
 			}
 		}
 

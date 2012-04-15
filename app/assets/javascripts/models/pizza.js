@@ -18,10 +18,3 @@ httpizza.Pizza = Backbone.Model.extend({
 		}
 	}
 });
-
-httpizza.Order = Backbone.Model.extend({
-	defaults: {
-		price: 0.0,
-		customer: {}
-	}
-});

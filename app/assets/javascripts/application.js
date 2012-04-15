@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require lib/underscore-min
 //= require lib/backbone-min
-//= require models/order
+//= require models/pizza
 //= require models/ingredient
 //= require views/pizza_view
 //= require views/ingredients_view
