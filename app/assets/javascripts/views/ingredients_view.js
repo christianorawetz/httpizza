@@ -59,7 +59,7 @@ httpizza.IngredientsView = Backbone.View.extend({
 		var property = data[0];
 		var value = data[1];
 
-		// Obtain an update method from the fnMap hash and invoke it to obtain an updated pizza property.
+		// Obtain an update function from the fnMap hash and invoke it to obtain an updated pizza property.
 		var updatedProperty = this.fnMap[property](value, this.pizza);
 
 		// Update the pizza model.

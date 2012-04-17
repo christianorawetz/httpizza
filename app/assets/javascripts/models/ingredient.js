@@ -11,7 +11,7 @@ httpizza.Ingredient = Backbone.Model.extend({});
 */
 httpizza.Ingredients = Backbone.Collection.extend({
 	model: httpizza.Ingredient,
-	url: '/httpizza/ingredients.json',
+	url: '/ingredients.json',
 
 	/**
 	* Returns a list of all cheeses.
