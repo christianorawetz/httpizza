@@ -23,7 +23,7 @@
 <script type='text/template' id='ingredients_template'>
 	<ul id='make-line-ingredients'>
 		<? _.each(ingredients, function(ingredient) { ?>
-			<li class='center btn btn-small btn-secondary' data-ingredient="<?= ingredient.get('ingredient_type') + ':' + ingredient.get('name') ?>">
+			<li class='btn' data-ingredient="<?= ingredient.get('ingredient_type') + ':' + ingredient.get('name') ?>">
 				<span><?= ingredient.get("name") ?></span>
 				<img src='<?= ingredient.get("icon_image") ?>'/>
 			</li>
