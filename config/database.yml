@@ -7,8 +7,8 @@ development:
   adapter: mysql2
   encoding: utf8
   database: httpizza_development
-  username: passenger
-  password: abc123
+  username: 
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
