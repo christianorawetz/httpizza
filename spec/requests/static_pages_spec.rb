@@ -7,7 +7,7 @@ describe "StaticPages" do
 
 		before { visit root_path }
 
-		it { should have_selector('h1', text: 'Welcome to the HTTPizza App!') }
+		it { should have_selector('h3', text: 'Welcome to the HTTPizza App!') }
 		it { should have_selector('title', text: 'HTTPizza') }
 		it { should_not have_selector('title', text: '| Home') }
 	end
