@@ -1,27 +1,24 @@
 Httpizza::Application.routes.draw do
 
   resources :ingredients
+  
 
   root :to => "static_pages#home"
 
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
-  get "order_pages/home"
+  match '/orders/makeline' => 'orders#makeline'
 
-  get "order_pages/crust"
 
-  get "order_pages/sauce"
 
-  get "order_pages/cheese"
+  # get "order_pages/home"
 
-  get "order_pages/toppings"
+  # get "order_pages/delivery"
 
-  get "order_pages/delivery"
+  # get "order_pages/checkout"
 
-  get "order_pages/checkout"
-
-  get "order_pages/makeline"
+  # get "order_pages/makeline"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

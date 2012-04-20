@@ -1,4 +1,4 @@
-class OrderPagesController < ApplicationController
+class OrdersController < ApplicationController
   caches_page :makeline
   
   def delivery
