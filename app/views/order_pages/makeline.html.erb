@@ -14,16 +14,14 @@
 			<canvas id='toppings-canvas' height='300px' width='300px'></canvas>
 		</div>
 
-		<div id='order-ticket-view'>
-			
-		</div>
+		<div id='order-ticket-view'></div>
 	</div>
 </div> <!-- /div.make-line -->
 
 <script type='text/template' id='ingredients_template'>
 	<ul id='make-line-ingredients'>
 		<? _.each(ingredients, function(ingredient) { ?>
-			<li class='btn' data-ingredient="<?= ingredient.get('ingredient_type') + ':' + ingredient.get('name') ?>">
+			<li class='btn btn-small' data-ingredient="<?= ingredient.get('ingredient_type') + ':' + ingredient.get('name') ?>">
 				<span><?= ingredient.get("name") ?></span>
 				<img src='<?= ingredient.get("icon_image") ?>'/>
 			</li>

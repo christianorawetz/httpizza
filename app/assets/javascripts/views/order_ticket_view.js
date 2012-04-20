@@ -111,10 +111,10 @@ httpizza.OrderTicketView = Backbone.View.extend({
 	*/
 	onRemoveClicked: function(e) {
 		// Obtain the ingredient type and name from the element's data-* attribute.
-		var data = e.currentTarget.getAttribute('data-ingredient');
+		var data = e.currentTarget.getAttribute('data-ingredient').split(':');
 
-		var itemType = data.split(":")[0];
-		var itemName = data.split(":")[1];
+		var itemType = data[0];
+		var itemName = data[1];
 
 		if (itemType === 'crust') {
 			// Navigate to crust section

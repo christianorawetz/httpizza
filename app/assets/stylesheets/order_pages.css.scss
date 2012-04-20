@@ -100,21 +100,28 @@ footer {
   }
 }
 
+.rounded-corners {
+  border-radius: 9px; 
+  -moz-border-radius: 9px; 
+  -webkit-border-radius: 9px; 
+  border: 0px solid #800000;
+}
+
+.active-link {
+  font-weight: bold;
+}
+
 #make-line {
   width: 625px;
   margin: 0px auto;
 }
 
 #ingredients-view {
-  
+  @extend .rounded-corners;
   padding: 0em 1em;
   padding-top: 1em;
   background-image: url('/assets/steel.jpg');
   background-repeat: repeat;
-  border-radius: 9px; 
-  -moz-border-radius: 9px; 
-  -webkit-border-radius: 9px; 
-  border: 0px solid #800000;
   margin-bottom: 0.5em;
   
   #make-line-ingredients {
@@ -149,29 +156,16 @@ footer {
       }
     }
   }
-
-}
-
-.active-link {
-  font-weight: bold;
-}
-
-.inactive-link {
-  font-weight: normal;
 }
 
 #order-area {
+  @extend .rounded-corners;
+
   width: 100%;
   display: inline-block;
   margin: 0em;
   background-image: url('/assets/tiles.jpg');
   background-repeat: repeat;
-
-  border-radius: 9px; 
-  -moz-border-radius: 9px; 
-  -webkit-border-radius: 9px; 
-  border: 0px solid #800000;
-
 
   #pizza-view {
     float: left;
@@ -188,20 +182,19 @@ footer {
   }
 
   #order-ticket {
+    @extend .rounded-corners;
+
     float: right;
     width: 250px;
+    padding: 0.25em;
+    margin: 1em;
     background-image: url('/assets/paper.jpg');
     background-repeat: repeat;
-    padding: 0.25em;
-    border-radius: 9px; 
-    -moz-border-radius: 9px; 
-    -webkit-border-radius: 9px; 
-    border: 0px solid #800000;
+
     -moz-box-shadow: 6px 6px 5px #170000;
     -webkit-box-shadow: 6px 6px 5px #170000;
     box-shadow: 6px 6px 5px #170000;
-    margin: 1em;
-
+    
     h1 { font-size: 10pt; margin: 1em;}
 
     #ticket-items {
