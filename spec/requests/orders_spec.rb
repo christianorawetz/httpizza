@@ -7,7 +7,7 @@ describe "Orders" do
 	describe "Makeline page" do
 		before { visit orders_makeline_path }
 
-		it { should have_selector('h1', text: 'Build a Pizza') }
+		it { should have_selector('h1', text: 'Pizza Makeline') }
 		it { should have_selector('title', text: 'HTTPizza | Build a Pizza') }
 		it { should have_selector('div#make-line') }
 		it { should have_selector('div#ingredients-view') }

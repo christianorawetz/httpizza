@@ -18,8 +18,8 @@ test:
   adapter: mysql2
   encoding: utf8
   database: httpizza_test
-  username: 
-  password: 
+  username: passenger
+  password: abc123
   socket: /var/run/mysqld/mysqld.sock
 
 # production:
