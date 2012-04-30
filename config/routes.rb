@@ -7,8 +7,10 @@ Httpizza::Application.routes.draw do
 
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
-
   match '/orders/makeline' => 'orders#makeline'
+  match '/orders/checkout' => 'orders#checkout'
+  match '/orders/confirmation' => 'orders#confirmation'
+  match '/orders' => 'orders#create', :via => :post
 
 
 

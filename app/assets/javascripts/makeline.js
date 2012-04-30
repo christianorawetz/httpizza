@@ -62,17 +62,5 @@ httpizza.AppRouter = Backbone.Router.extend({
 	},
 });
 
-$(function() {
-	// Override the default ERB template style due to conflicts with Rails.
-	_.templateSettings = {
-	    interpolate: /\<\?\=(.+?)\?\>/g,
-	    evaluate: /\<\?(.+?)\?\>/g
-	};
-
-	// Create an AppRouter and start the app.
-	var app = new httpizza.AppRouter();
-	Backbone.history.start();
-});
-
 
 

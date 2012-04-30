@@ -14,12 +14,16 @@
 //= require jquery_ujs
 //= require underscore-min
 //= require backbone-min
+//= require modernizr-2.5.3
 //= require models/pizza
 //= require models/ingredient
+//= require models/order
+//= require modules/pizza_persistence_helper
+//= require modules/pizza_canvas_helper
 //= require views/pizza_view
 //= require views/ingredients_view
 //= require views/order_ticket_view
-//= require modules/pizza_canvas_helper
+//= require views/checkout_view
 //= require makeline
 
 

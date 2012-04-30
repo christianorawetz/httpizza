@@ -2,18 +2,11 @@
 
 <h1>Pizza Makeline</h1>
 
-
 <div id='make-line'>
 	<div id='ingredients-view'></div>
 
 	<div id='order-area'>
-		<div id='pizza-view'>
-			<canvas id='crust-canvas' height='300px' width='300px'></canvas>
-			<canvas id='sauce-canvas' height='300px' width='300px'></canvas>
-			<canvas id='cheese-canvas' height='300px' width='300px'></canvas>
-			<canvas id='toppings-canvas' height='300px' width='300px'></canvas>
-		</div>
-
+		<div id='pizza-view'></div>
 		<div id='order-ticket-view'></div>
 	</div>
 </div> <!-- /div.make-line -->
@@ -33,6 +26,18 @@
 		<li><a id='cheesesLink' href='#'>Cheeses</a></li>
 		<li><a id='toppingsLink' href='#'>Toppings</a></li>
 	</ul>
+</script>
+
+<script type='text/template' id='pizza_template'>
+	<div>
+		<canvas id='crust-canvas' height='300px' width='300px'></canvas>
+		<canvas id='sauce-canvas' height='300px' width='300px'></canvas>
+		<canvas id='cheese-canvas' height='300px' width='300px'></canvas>
+		<canvas id='toppings-canvas' height='300px' width='300px'></canvas>
+	</div>
+	<div id='checkout-btn' class='center'>
+		<button class="btn btn-mini">Checkout</button>
+	</div>
 </script>
 
 <script type='text/template' id='order_ticket_template'>
@@ -67,4 +72,18 @@
 			$<?= total.toFixed(2) ?>
 		</div>
 	</div>
+</script>
+
+<script type='text/javascript'>
+$(document).ready(function() {
+	// Override the default ERB template style due to conflicts with Rails.
+	_.templateSettings = {
+	    interpolate: /\<\?\=(.+?)\?\>/g,
+	    evaluate: /\<\?(.+?)\?\>/g
+	};
+
+	// Create an AppRouter and start the app.
+	var app = new httpizza.AppRouter();
+	Backbone.history.start();
+});
 </script>

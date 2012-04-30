@@ -56,6 +56,10 @@ p {
   line-height: 1.7em;
 }
 
+fieldset { padding-top: 1.5em; }
+
+label { font-weight: bold; }
+
 /* header */
 
 #logo {
@@ -171,14 +175,14 @@ footer {
     float: left;
     position: relative;
 
-    canvas { 
-      margin: 1em;
-    }
+    canvas { margin: 1em; }
 
     #crust-canvas { position: absolute; left: 0px; top: 0px; z-index: 0; }
     #sauce-canvas { position: absolute; left: 0px; top: 0px; z-index: 1; }
     #cheese-canvas { position: absolute; left: 0px; top: 0px; z-index: 2; }
     #toppings-canvas { position: relative; left: 0px; top: 0px; z-index: 3; }
+
+    #checkout-btn { margin-bottom: 1em; }
   }
 
   #order-ticket {
@@ -220,3 +224,4 @@ footer {
     }
   }
 }
+
