@@ -17,15 +17,17 @@ httpizza.CheckoutView = Backbone.View.extend({
 		_.bindAll(this, "geocodeAddress");
 
 		// Create a persistence helper
-		this.persistenceHelper = new httpizza.OrderPersistenceHelper();
+		this.persistenceHelper = new httpizza.PizzaPersistenceHelper();
 
 		// Retrieve the order from session storage
-		this.order = this.persistenceHelper.getOrderSession();
+		var pizza = this.persistenceHelper.getPizzaSession();
 
 		// Redirect the user to the makeline page if the order doesn't have a pizza.
-		if (typeof this.order.get('pizza') === 'undefined') {
+		if (typeof pizza === 'undefined') {
 			window.location = "/orders/makeline";
 		}
+
+		this.order = new httpizza.Order({ pizza: pizza });
 
 		// Compile the view template
 		this.template = _.template( $("#checkout_template").html() );
@@ -143,8 +145,13 @@ httpizza.CheckoutView = Backbone.View.extend({
 
 		geocoder.geocode({ latLng: latLong }, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK && results[0]) {
+				var address = results[0].formatted_address;
+
+				// Perform a little formatting (replace commas with newlines)
+				address = address.replace(/,/g, "\n");
+
 				// Update the order's address
-				that.order.set({ address: results[0].formatted_address }, {silent: true});
+				that.order.set({ address: address }, {silent: true});
 				
 				// Render the view
 				that.render();

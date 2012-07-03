@@ -12,10 +12,11 @@ httpizza.CanvasHelper = function() {
 	* Gets a 2D context from the canvas.
 	*/
 	that.getContext = function(canvas) {
-		if (canvas.getContext) {
+		// Determine if the canvas API is supported.
+		if (Modernizr.canvas) {
 			return canvas.getContext('2d');
 		} else {
-			alert("Your browser doesn't support the 'canvas' api.");
+			alert("Your browser doesn't support the canvas api.");
 			throw "Browser doesn't support canvas api.";
 		}
 	};
@@ -123,7 +124,7 @@ httpizza.PizzaCanvasHelper = function(ingredients) {
 
 		that.cheeseContext = that.cheeseContext || that.getContext(canvas);
 
-		drawPattern(that.cheeseContext, pizza.get('cheeses'));
+		drawImagePattern(that.cheeseContext, pizza.get('cheeses'));
 	};
 
 	/**
@@ -134,18 +135,20 @@ httpizza.PizzaCanvasHelper = function(ingredients) {
 
 		that.toppingsContext = that.toppingsContext || that.getContext(canvas);
 
-		drawPattern(that.toppingsContext, pizza.get('toppings'));
+		drawImagePattern(that.toppingsContext, pizza.get('toppings'));
 	};
 
 	/**
-	* Draws ingredients using a context.
+	* Draws ingredients using image patterns.
 	*/
-	function drawPattern(context, ingredientNames) {
+	function drawImagePattern(context, ingredientNames) {
 		_.each(ingredientNames, function(name) {
 			var ingredient = ingredients.filterByName(name)[0];
 			var imageUrl = ingredient.get('brush_image');
 			var imageObj = new Image();
 
+			// Images are loaded asynchronously so the drawing
+			// needs to be handled by a callback function.
 			imageObj.onload = function() {
 				var pattern = context.createPattern(imageObj, "repeat");
 				that.drawFilledCircle(context, that.xoffset, that.yoffset, that.radius + 10, pattern);

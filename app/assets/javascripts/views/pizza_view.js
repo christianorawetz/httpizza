@@ -5,13 +5,6 @@ var httpizza = httpizza || {};
 */
 httpizza.PizzaView = Backbone.View.extend({
 	/**
-	* Event bindings - associate UI events with event handler methods.
-	*/
-	events: {
-		"click button": "checkout"
-	},
-
-	/**
 	* Invoked automatically when a new PizzaView is created.
 	*/
 	initialize: function() {
@@ -20,9 +13,6 @@ httpizza.PizzaView = Backbone.View.extend({
 
 		// Create an instance of a canvas helper module.
 		this.canvasHelper = new httpizza.PizzaCanvasHelper(this.options.ingredients);
-
-		// Create an instance of a persistence helper module.
-		this.persistenceHelper = new httpizza.OrderPersistenceHelper();
 
 		// Get a reference to the pizza from the constructor agruments (this.options)
 		// and bind the pizza's individual change events to the respective event handlers.
@@ -43,8 +33,11 @@ httpizza.PizzaView = Backbone.View.extend({
 		// Render the template.
 		$(this.el).html(this.template());
 
-		// Render the crust by default.
+		// Draw the pizza layers
 		this.renderCrust();
+		this.renderSauce();
+		this.renderCheese();
+		this.renderToppings();
 	},
 
 	/**
@@ -77,19 +70,5 @@ httpizza.PizzaView = Backbone.View.extend({
 	renderToppings: function() {
 		this.toppingsCanvas = this.toppingsCanvas || $("#toppings-canvas")[0];
 		this.canvasHelper.drawToppings(this.toppingsCanvas, this.pizza);
-	},
-
-	/**
-	*
-	*/
-	checkout: function() {
-		// Create a new order model
-		var order = new httpizza.Order({ pizza: this.pizza });
-
-		// Persist the order to session storage
-		this.persistenceHelper.saveOrderSession(order);
-
-		// Navigate to the next view
-		window.location = "/orders/checkout";
 	}
 });

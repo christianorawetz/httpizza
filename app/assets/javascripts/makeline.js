@@ -19,7 +19,7 @@ httpizza.AppRouter = Backbone.Router.extend({
 		_.bindAll(this, "index", "loadViews");
 
 		// Create a new Pizza and Ingredients collection.
-		this.pizza = new httpizza.Pizza();
+		this.pizza = new httpizza.PizzaPersistenceHelper().getPizzaSession();
 		this.ingredients = new httpizza.Ingredients();
 	},
 
@@ -59,7 +59,7 @@ httpizza.AppRouter = Backbone.Router.extend({
 			ingredients: this.ingredients,
 			pizza: this.pizza
 		}).render();
-	},
+	}
 });
 
 

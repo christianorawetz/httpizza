@@ -35,9 +35,6 @@
 		<canvas id='cheese-canvas' height='300px' width='300px'></canvas>
 		<canvas id='toppings-canvas' height='300px' width='300px'></canvas>
 	</div>
-	<div id='checkout-btn' class='center'>
-		<button class="btn btn-mini">Checkout</button>
-	</div>
 </script>
 
 <script type='text/template' id='order_ticket_template'>
@@ -71,7 +68,11 @@
 			<label>Total:</label>
 			$<?= total.toFixed(2) ?>
 		</div>
+
+		<button class="btn btn-mini">Checkout</button>
 	</div>
+
+
 </script>
 
 <script type='text/javascript'>

@@ -61,23 +61,23 @@ httpizza.PersistenceHelper = function() {
 	return that;
 };
 
-httpizza.OrderPersistenceHelper = function() {
+httpizza.PizzaPersistenceHelper = function() {
 	var that = new httpizza.PersistenceHelper();
 
-	that.saveOrderSession = function(order) {
-		// Serialize the order object to a JSON string.
-		var json = JSON.stringify( order.toJSON() );
+	that.savePizzaSession = function(pizza) {
+		// Serialize the pizza object to a JSON string.
+		var json = JSON.stringify( pizza.toJSON() );
 
 		// Persist the JSON string to sessionStorage.
-		that.setSessionStorage('order', json);
+		that.setSessionStorage('pizza', json);
 	};
 
-	that.getOrderSession = function() {
-		// Retrieve the order JSON string from sessionStorage.
-		var json = that.getSessionStorage('order');
+	that.getPizzaSession = function() {
+		// Retrieve the pizza JSON string from sessionStorage.
+		var json = that.getSessionStorage('pizza');
 
-		// Deserialize the JSON string to an Order model object.
-		return new httpizza.Order( JSON.parse(json) );
+		// Create a new pizza model and pass it the json object (properties)
+		return new httpizza.Pizza( JSON.parse(json) );
 	};
 
 	that.saveOrder = function(order) {

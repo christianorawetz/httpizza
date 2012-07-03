@@ -197,7 +197,7 @@ footer {
 
     -moz-box-shadow: 6px 6px 5px #170000;
     -webkit-box-shadow: 6px 6px 5px #170000;
-    box-shadow: 6px 6px 5px #170000;
+    box-shadow: 6px 6px 5px #170000; 
     
     h1 { font-size: 10pt; margin: 1em;}
 
@@ -221,7 +221,10 @@ footer {
     #ticket-cost {
       float: right;
       label { font-weight: bold; display: inline; }
+      display: block;
     }
+
+    button { clear: both; margin: 0.25em; }
   }
 }
 

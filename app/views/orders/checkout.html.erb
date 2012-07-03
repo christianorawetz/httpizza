@@ -8,24 +8,24 @@
 	<fieldset class="control-group span6">
 		<legend>Delivery Information</legend>
 		<div>
-			<label for="nameField">A name</label>
+			<label for="nameField">Name</label>
 			<input type="text" id="nameField" placeholder="Enter a name…" required value="<?= order.get('name') ?>"/>
 		</div>
 
 		<div>
-			<label for="emailField">An email address</label>
+			<label for="emailField">Email Address</label>
 			<input type="email" id="emailField" id="nameField"placeholder="Enter an email address..." required value="<?= order.get('email') ?>"/>
 		</div>
 
 		<div>
-			<label for="phoneField">A phone number</label>
+			<label for="phoneField">Phone Number</label>
 			<input type="tel" id="phoneField" placeholder="Enter a phone number..." required value="<?= order.get('phone') ?>"/>
 		</div>
 
 		<div>	
-			<label for="addressField">An address</label>
+			<label for="addressField">Address</label>
 			<div>
-				<textarea width="100" height="100" id="addressField" placeholder="Enter an address…" required><?= order.get('address') ?></textarea>
+				<textarea rows="5" id="addressField" placeholder="Enter an address…" required><?= order.get('address') ?></textarea>
 				<button class="btn" id="geolocButton">Locate me</button>
 			</div>
 
@@ -39,16 +39,16 @@
 			<tr><th colspan="2">Your Pizza</th></tr>
 			<tr>
 				<td>Crust:</td>
-				<td><?= order.get('pizza').crust ?></td>
+				<td><?= order.get('pizza').get('crust') ?></td>
 			</tr>
 			<tr>
 				<td>Sauce:</td>
-				<td><?= order.get('pizza').sauce ?></td>
+				<td><?= order.get('pizza').get('sauce') ?></td>
 			</tr>
 			<tr>
 				<td>Cheeses:</td>
 				<td>
-				<? _.each(order.get('pizza').cheeses, function(cheese) { ?>
+				<? _.each(order.get('pizza').get('cheeses'), function(cheese) { ?>
 					<?= cheese ?>,
 				<? }) ?>
 				</td>
@@ -56,14 +56,14 @@
 			<tr>
 				<td>Toppings:</td>
 				<td>
-				<? _.each(order.get('pizza').toppings, function(topping) { ?>
+				<? _.each(order.get('pizza').get('toppings'), function(topping) { ?>
 					<?= topping ?>,
 				<? }) ?>
 				</td>
 			</tr>
 			<tr>
 				<td>Price $:</td>
-				<td><strong>This pizza is free!</strong></td>
+				<td><strong>This one's on the house!</strong></td>
 			</tr>
 		</table>
 		
@@ -83,7 +83,5 @@ $(document).ready(function() {
 
 	// Create and render the checkout view
 	new httpizza.CheckoutView({ el: $('#checkout-view') }).render();
-
-	Backbone.history.start();
 })
 </script>

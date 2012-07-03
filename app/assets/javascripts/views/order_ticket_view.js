@@ -10,7 +10,8 @@ httpizza.OrderTicketView = Backbone.View.extend({
 	* Event bindings - associate UI events with event handler methods.
 	*/
 	events: {
-		"click li div a": 'onRemoveClicked'
+		"click li div a": 'onRemoveClicked',
+		"click button": 'checkout'
 	},
 
 	/**
@@ -132,5 +133,16 @@ httpizza.OrderTicketView = Backbone.View.extend({
 			else 
 				this.pizza.set({ toppings: ingredients });
 		}
+	},
+
+	/**
+	* Persists the order to session storage and navigates to the checkout view.
+	*/
+	checkout: function() {
+		// Persist the order to session storage
+		new httpizza.PizzaPersistenceHelper().savePizzaSession(this.pizza);
+
+		// Navigate to the next view
+		window.location = "/orders/checkout";
 	}
 });
